@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List Filter</title>
+        <style>
+            input[type=text]{
+                width:180px;
+                height:28px;
+                padding:2px;
+                font-size:13px;
+                margin:10px 10px;
+                border-radius:3%;
+                padding-left:10px;
+                border-color:#000;}
+            ul{
+                padding:0;
+                list-style-type:none;}
+            li{
+                margin:5px 10px;
+                height:20px;
+                padding:2.5px;
+                font-size:15px;
+                padding-left:10px;
+                font-family:Cambria;
+                background-color:#F0F0F0;}
+        </style>
+        <script>
+            const filter=()=>{
+                const filterValue=document.getElementById('inputfruits').value.toUpperCase();
+                const listoffruits=document.getElementById('listoffruits');
+                const fruits=listoffruits.getElementsByTagName('li');
+                Array.from(fruits).forEach(fruit =>{
+                const textValue = fruit.textContent||fruit.innerText;
+                const shouldShow = textValue.toUpperCase().indexOf(filterValue)>-1;
+                fruit.style.display = shouldShow?'block':'none';});};
+        </script>
+    </head>
+    <body>
+        <input type="text" id="inputfruits" oninput="filter()" placeholder="Filter list...">
+        <ul id="listoffruits">
+            <li>Apple</li>
+            <li>Banana</li>
+            <li>Cherry</li>
+            <li>Date</li>
+            <li>Elderberry</li>
+        </ul>
+    </body>
+</html>
